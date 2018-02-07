@@ -4,7 +4,9 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
@@ -26,9 +28,22 @@ public class SplashScreen extends AppCompatActivity {
 
         FadeOutTheLogo();
 
-        MoveTheText();
+        Handler TextDelay = new Handler();
+        TextDelay.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                MoveTheText();
+            }
+        }, 2500);
 
-        SwitchActivity();
+
+        Handler SwitchDelay = new Handler();
+        SwitchDelay.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                SwitchActivity();
+            }
+        }, 3000);
 
 
     }
@@ -51,16 +66,33 @@ public class SplashScreen extends AppCompatActivity {
 
     public void FadeOutTheLogo() {
 
+        LogoId = findViewById(R.id.HomieLogo);
         Animation fadeOut = new AlphaAnimation(1, 0);
         fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
         fadeOut.setStartOffset(0);
         fadeOut.setDuration(2000);
+        fadeOut.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+                LogoId.setAlpha(0f);
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
 
         AnimationSet LogoFadeOut = new AnimationSet(false); //change to false
         LogoFadeOut.addAnimation(fadeOut);
-        LogoId = findViewById(R.id.HomieLogo);
         LogoId.setAnimation(LogoFadeOut);
-        showLockTaskEscapeMessage();
 
 
     }
