@@ -1,21 +1,27 @@
 package com.smartmccg.homie;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class Login extends AppCompatActivity {
     Button b1;
     EditText ed1,ed2;
+    TextView TitleText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        TitleText = findViewById(R.id.LoginTitle);
+        Typeface TitleFont= Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
+        TitleText.setTypeface(TitleFont);
         b1 = findViewById(R.id.button);
         ed1 = findViewById(R.id.login);
         ed2 = findViewById(R.id.password);

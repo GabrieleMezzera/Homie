@@ -1,86 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF8100"
+    android:background="@color/colorPrimary"
     tools:context="com.smartmccg.homie.Login">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/relativeLayout"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_height="514dp"
-        android:layout_width="300dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".login">
-
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/ic_logo"
-            android:visibility="visible"
-            android:id="@+id/imageView" />
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        tools:context=".login"
+        android:orientation="vertical"
+        android:gravity="">
 
         <TextView
-            android:id="@+id/textview"
+            android:id="@+id/LoginTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="80pt"
             android:text="@string/homie"
             android:textColor="#FFFFFF"
-            android:textSize="40sp" />
+            android:textSize="25pt"
+            android:layout_gravity="center"/>
 
-        <EditText
-            android:id="@+id/login"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="140dp"
-            android:focusable="true"
-            android:hint= "@string/indirizzoIP"
-            android:textColorHighlight="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/login"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/login"
-            android:layout_below="@+id/login"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:textColorHighlight="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            />
+            <EditText
+                android:id="@+id/login"
+                android:layout_width="140pt"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:hint="@string/IPAddress"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_alignLeft="@+id/textview"
-            android:layout_alignStart="@+id/textview"
-            android:layout_marginTop="250dp"
-            android:text="@string/login" />
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="140pt"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="120dp"
+                android:layout_height="60dp"
 
-</android.support.constraint.ConstraintLayout>
+                android:text="@string/login" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

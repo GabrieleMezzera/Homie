@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="logo_description">Il Logo di Homie</string>
+    <string name="IPAddress">Indirizzo IP</string>
+    <string name="login">Accesso</string>
+</resources>
