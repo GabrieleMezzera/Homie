@@ -49,8 +49,8 @@ public class SplashScreen extends AppCompatActivity {
 
     public void SwitchActivity() {
 
-        Intent ToMain = new Intent(SplashScreen.this, Home.class); //Create an intent that will start the main activity.
-        SplashScreen.this.startActivity(ToMain);
+        Intent ToLogin = new Intent(SplashScreen.this, Login.class); //Create an intent that will start the main activity.
+        SplashScreen.this.startActivity(ToLogin);
         SplashScreen.this.finish(); //Finish splash activity so user cant go back to it.
         overridePendingTransition(R.anim.mainmenufadein, R.anim.splashscreenfadeout); //Apply splash exit (fade out) and main entry (fade in) animation transitions.
 
