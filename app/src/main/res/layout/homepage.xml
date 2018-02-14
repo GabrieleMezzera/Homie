@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF8100"
+    tools:context="com.smartmccg.homie.Home">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/relativeLayout"
+        android:layout_height="514dp"
+        android:layout_width="378dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".Home">
+
+        <ImageButton
+            android:id="@+id/uno"
+            android:layout_width="190dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_logo" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/uno"
+            android:layout_marginTop="50dp"
+            android:entries="@array/Stanze"/>
+
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
+
