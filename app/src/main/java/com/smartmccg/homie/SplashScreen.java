@@ -6,7 +6,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
@@ -50,7 +49,7 @@ public class SplashScreen extends AppCompatActivity {
 
     public void SwitchActivity() {
 
-        Intent ToMain = new Intent(SplashScreen.this, MainActivity.class); //Create an intent that will start the main activity.
+        Intent ToMain = new Intent(SplashScreen.this, Home.class); //Create an intent that will start the main activity.
         SplashScreen.this.startActivity(ToMain);
         SplashScreen.this.finish(); //Finish splash activity so user cant go back to it.
         overridePendingTransition(R.anim.mainmenufadein, R.anim.splashscreenfadeout); //Apply splash exit (fade out) and main entry (fade in) animation transitions.
