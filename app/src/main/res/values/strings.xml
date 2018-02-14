@@ -2,4 +2,14 @@
     <string name="app_name">Homie</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="logo_description">The Homie Logo</string>
+    <string name="indirizzoIP">Indirizzo IP</string>
+    <string name="homie">Homie</string>
+    <string name="login">login</string>
+    <string name="password">Password</string>
+    <string-array name="Stanze">
+        <item>Casa</item>
+        <item>Cucina</item>
+        <item>Stanza d'ingresso</item>
+        <item>Primo piano</item>
+    </string-array>
 </resources>
