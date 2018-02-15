@@ -21,7 +21,7 @@
             android:id="@+id/LoginTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80pt"
+            android:layout_marginTop="50pt"
             android:text="@string/homie"
             android:textColor="#FFFFFF"
             android:textSize="25pt"
@@ -30,6 +30,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50pt"
             android:layout_gravity="center"
             android:orientation="vertical"
             android:gravity="center">

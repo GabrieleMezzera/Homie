@@ -58,7 +58,7 @@ public class SplashScreen extends AppCompatActivity {
 
     public void MoveTheText() {
         ObjectAnimator TextMovement;
-        TextMovement = ObjectAnimator.ofFloat(SplashText, "translationY", 0f, -1000f);
+        TextMovement = ObjectAnimator.ofFloat(SplashText, "translationY", 0f, -1070f);
         TextMovement.setDuration(500);
         TextMovement.start();
     }
