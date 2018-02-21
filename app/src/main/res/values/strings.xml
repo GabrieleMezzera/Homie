@@ -6,9 +6,9 @@
     <string name="login">Login</string>
     <string name="password" translatable="false">Password</string>
     <string-array name="Stanze">
+        <item>Stanza d'ingresso</item>
         <item>Casa</item>
         <item>Cucina</item>
-        <item>Stanza d'ingresso</item>
         <item>Primo piano</item>
     </string-array>
     <string name="IPAddress">IP Address</string>
