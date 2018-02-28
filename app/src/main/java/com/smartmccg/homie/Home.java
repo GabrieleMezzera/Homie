@@ -15,13 +15,13 @@ public class Home extends AppCompatActivity implements Door.OnFragmentInteractio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout);
+        TabLayout tabLayout = findViewById(R.id.tablayout);
         tabLayout.addTab(tabLayout.newTab().setText("Temperature"));
         tabLayout.addTab(tabLayout.newTab().setText("Light"));
         tabLayout.addTab(tabLayout.newTab().setText("Door"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager)findViewById(R.id.pager);
+        final ViewPager viewPager = findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
