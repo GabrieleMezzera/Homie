@@ -8,6 +8,7 @@
     android:background="@color/colorPrimary">
 
     <LinearLayout
+        android:id="@+id/SplashLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -17,8 +18,8 @@
 
         <ImageView
             android:id="@+id/HomieLogo"
-            android:layout_width="150pt"
-            android:layout_height="110pt"
+            android:layout_width="333dp"
+            android:layout_height="244dp"
             android:layout_gravity="center"
             android:contentDescription="@string/logo_description"
             android:src="@drawable/ic_logo" />
@@ -31,7 +32,8 @@
             android:gravity="center"
             android:text="@string/app_name"
             android:textColor="@color/pureWhite"
-            android:textSize="25pt" />
+            android:textSize="55sp"
+            />
 
     </LinearLayout>
 
