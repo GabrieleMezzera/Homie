@@ -31,7 +31,6 @@ public class Login extends AppCompatActivity {
         LoginManager();
 
 
-
         Handler StartSplashScreen = new Handler();
         StartSplashScreen.postDelayed(new Runnable() {
             @Override
@@ -39,6 +38,17 @@ public class Login extends AppCompatActivity {
                 PresentSplashScreen();
             }
         }, 50);
+
+        Handler RestoreVisibility = new Handler();
+        RestoreVisibility.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                TitleText.setVisibility(View.VISIBLE);
+                b1.setVisibility(View.VISIBLE);
+                ed1.setVisibility(View.VISIBLE);
+                ed2.setVisibility(View.VISIBLE);
+            }
+        }, 1000);
     }
 
     public void SetupThePage() {
@@ -50,6 +60,10 @@ public class Login extends AppCompatActivity {
         b1 = findViewById(R.id.button);
         ed1 = findViewById(R.id.login);
         ed2 = findViewById(R.id.password);
+        TitleText.setVisibility(View.INVISIBLE);
+        b1.setVisibility(View.INVISIBLE);
+        ed1.setVisibility(View.INVISIBLE);
+        ed2.setVisibility(View.INVISIBLE);
     }
 
     public void LoginManager() {
