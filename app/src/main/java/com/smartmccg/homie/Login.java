@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
             public void run() {
                 PresentSplashScreen();
             }
-        }, 50);
+        }, 150);
 
         Handler RestoreVisibility = new Handler();
         RestoreVisibility.postDelayed(new Runnable() {
@@ -72,7 +72,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 if(ed1.getText().toString().equals("admin") && ed2.getText().toString().equals("admin")) {
                     Toast.makeText(getApplicationContext(),
-                            "Login avvenuto",Toast.LENGTH_SHORT).show();
+                            getString(R.string.logged_in),Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(
                             getApplicationContext(),
                             Home.class
@@ -80,7 +80,7 @@ public class Login extends AppCompatActivity {
                     startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(),
-                            "Credenziali errate",Toast.LENGTH_SHORT).show();
+                            getString(R.string.wrong_cred),Toast.LENGTH_SHORT).show();
                 }
 
             }
