@@ -5,11 +5,16 @@
     <string name="homie" translatable="false">Homie</string>
     <string name="login">Login</string>
     <string name="password" translatable="false">Password</string>
-    <string-array name="Stanze">
-        <item>Stanza d'ingresso</item>
-        <item>Casa</item>
-        <item>Cucina</item>
-        <item>Primo piano</item>
-    </string-array>
     <string name="IPAddress">IP Address</string>
+    <string name="door">Door</string>
+    <string name="light">Light</string>
+    <string name="temperature">Temperature</string>
+    <string name="logged_in">Logged</string>
+    <string name="wrong_cred">Wrong Credentials</string>
+    <string-array name="Rooms">
+        <item>Hall</item>
+        <item>Home</item>
+        <item>Kitchen</item>
+        <item>1st Floor</item>
+    </string-array>
 </resources>
