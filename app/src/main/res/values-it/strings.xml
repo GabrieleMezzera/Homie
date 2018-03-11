@@ -3,4 +3,9 @@
     <string name="logo_description">Il Logo di Homie</string>
     <string name="IPAddress">Indirizzo IP</string>
     <string name="login">Accesso</string>
+    <string name="door">Porta</string>
+    <string name="light">Luce</string>
+    <string name="temperature">Temperatura</string>
+    <string name="logged_in">Accesso Effettuato</string>
+    <string name="wrong_cred">Credenziali Errate</string>
 </resources>
