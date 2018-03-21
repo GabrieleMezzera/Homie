@@ -40,7 +40,7 @@
                 android:layout_width="311dp"
                 android:layout_height="wrap_content"
                 android:focusable="true"
-                android:hint="@string/IPAddress"
+                android:hint="@string/username"
                 android:textColorHighlight="#FFFFFF"
                 android:textColorHint="#FFFFFF"
                 android:textColor="@color/pureWhite"/>

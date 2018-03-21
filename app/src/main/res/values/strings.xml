@@ -11,6 +11,7 @@
     <string name="temperature">Temperature</string>
     <string name="logged_in">Logged</string>
     <string name="wrong_cred">Wrong Credentials</string>
+    <string name="username">Username</string>
     <string-array name="Rooms">
         <item>Hall</item>
         <item>Home</item>

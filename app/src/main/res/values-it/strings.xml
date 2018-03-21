@@ -8,4 +8,5 @@
     <string name="temperature">Temperatura</string>
     <string name="logged_in">Accesso Effettuato</string>
     <string name="wrong_cred">Credenziali Errate</string>
+    <string name="username">Nome Utente</string>
 </resources>
