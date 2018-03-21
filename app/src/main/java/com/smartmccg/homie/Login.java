@@ -126,7 +126,7 @@ public class Login extends AppCompatActivity {
             super.onPreExecute();
 
             //this method will be running on UI thread
-            pdLoading.setMessage("\tLoading...");
+            pdLoading.setMessage("\t" + getString(R.string.loading) + "...");
             pdLoading.setCancelable(false);
             pdLoading.show();
 
@@ -223,7 +223,7 @@ public class Login extends AppCompatActivity {
                 /* Here launching another activity when login successful. If you persist login state
                 use sharedPreferences of Android. and logout button to clear sharedPreferences.
                  */
-                Toast.makeText(Login.this, "Login Successful !", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.logged_in),Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(
                         getApplicationContext(),
                         Home.class
@@ -234,11 +234,11 @@ public class Login extends AppCompatActivity {
             }else if (result.equalsIgnoreCase("false")){
 
                 // If username and password does not match display a error message
-                Toast.makeText(Login.this, "Invalid email or password", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.invalid_username_password), Toast.LENGTH_LONG).show();
 
             } else if (result.equalsIgnoreCase("exception") || result.equalsIgnoreCase("unsuccessful")) {
 
-                Toast.makeText(Login.this, "OOPs! Something went wrong. Connection Problem.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.connection_error), Toast.LENGTH_LONG).show();
 
             }
         }

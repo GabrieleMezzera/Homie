@@ -9,4 +9,7 @@
     <string name="logged_in">Accesso Effettuato</string>
     <string name="wrong_cred">Credenziali Errate</string>
     <string name="username">Nome Utente</string>
+    <string name="loading">Caricamento</string>
+    <string name="invalid_username_password">Nome Utente o Password Errati</string>
+    <string name="connection_error">Ops! C\'è qualcosa che non va nella tua connessione a Internet</string>
 </resources>
