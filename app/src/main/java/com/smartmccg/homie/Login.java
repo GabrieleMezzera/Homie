@@ -86,20 +86,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new AsyncLogin().execute(ed1.getText().toString(), ed2.getText().toString());
-                /*if(ed1.getText().toString().equals("admin") && ed2.getText().toString().equals("admin")) {
-                    Toast.makeText(getApplicationContext(),
-                            getString(R.string.logged_in),Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(
-                            getApplicationContext(),
-                            Home.class
-                    );
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),
-                            getString(R.string.wrong_cred),Toast.LENGTH_SHORT).show();
-                }*/
-
             }
         });
     }
@@ -224,10 +210,7 @@ public class Login extends AppCompatActivity {
                 use sharedPreferences of Android. and logout button to clear sharedPreferences.
                  */
                 Toast.makeText(getApplicationContext(), getString(R.string.logged_in),Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(
-                        getApplicationContext(),
-                        Home.class
-                );
+                Intent intent = new Intent(getApplicationContext(), Home.class);
                 startActivity(intent);
                 finish();
 
