@@ -13,21 +13,34 @@
         <activity
             android:name=".Login"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+
 
         <activity
             android:name=".SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+
         <activity
             android:name=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".entrance.Entrance"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".kitchen.Kitchen"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".living.Living"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 

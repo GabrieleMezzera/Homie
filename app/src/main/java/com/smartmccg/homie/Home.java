@@ -1,52 +1,82 @@
 package com.smartmccg.homie;
 
 
-import android.net.Uri;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import java.util.ArrayList;
+import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
-public class Home extends AppCompatActivity implements Door.OnFragmentInteractionListener,Light.OnFragmentInteractionListener,Temperature.OnFragmentInteractionListener  {
+import com.smartmccg.homie.entrance.Entrance;
+import com.smartmccg.homie.kitchen.Kitchen;
+import com.smartmccg.homie.living.Living;
 
+
+public class Home extends Activity implements OnItemSelectedListener{
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        TabLayout tabLayout = findViewById(R.id.tablayout);
-        tabLayout.addTab(tabLayout.newTab().setText("Temperature"));
-        tabLayout.addTab(tabLayout.newTab().setText("Light"));
-        tabLayout.addTab(tabLayout.newTab().setText("Door"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        // Spinner element
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
-        final ViewPager viewPager = findViewById(R.id.pager);
-        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
-        viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
+        String[] rooms = getResources().getStringArray(R.array.Rooms);
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, rooms);
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
 
+        // Showing selected spinner item
+        if(item.equals("Hall")){
+            Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        }
+        if(item.equals("Home")){
+            Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(
+                    getApplicationContext(),
+                    Entrance.class
+            );
+            startActivity(intent);
+        }
+        if(item.equals("Kitchen")){
+            Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(
+                    getApplicationContext(),
+                    Kitchen.class
+            );
+            startActivity(intent);
+        }
+        if(item.equals("1st Floor")){
+            Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+            Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(
+                    getApplicationContext(),
+                    Living.class
+            );
+        }
+
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 }
