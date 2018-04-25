@@ -24,9 +24,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 public class Login extends AppCompatActivity {
@@ -34,6 +37,7 @@ public class Login extends AppCompatActivity {
     EditText ed1,ed2;
     TextView TitleText;
     Context context;
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +89,8 @@ public class Login extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AsyncLogin().execute(ed1.getText().toString(), ed2.getText().toString());
+                userName = ed1.getText().toString();
+                new AsyncLogin().execute(userName, convertPassMd5(ed2.getText().toString()));
             }
         });
     }
@@ -209,8 +214,11 @@ public class Login extends AppCompatActivity {
                 /* Here launching another activity when login successful. If you persist login state
                 use sharedPreferences of Android. and logout button to clear sharedPreferences.
                  */
-                Toast.makeText(getApplicationContext(), getString(R.string.logged_in),Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), Home.class);
+                Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+                SharedPreferences userData = getSharedPreferences("user_data", Activity.MODE_PRIVATE);
+                SharedPreferences.Editor SharerUserInfo = userData.edit();
+                SharerUserInfo.putString("userName", userName);
+                SharerUserInfo.commit();
                 startActivity(intent);
                 finish();
 
@@ -226,6 +234,23 @@ public class Login extends AppCompatActivity {
             }
         }
 
+    }
+
+    public static String convertPassMd5(String pass) {
+        String password = null;
+        MessageDigest mdEnc;
+        try {
+            mdEnc = MessageDigest.getInstance("MD5");
+            mdEnc.update(pass.getBytes(), 0, pass.length());
+            pass = new BigInteger(1, mdEnc.digest()).toString(16);
+            while (pass.length() < 32) {
+                pass = "0" + pass;
+            }
+            password = pass;
+        } catch (NoSuchAlgorithmException e1) {
+            e1.printStackTrace();
+        }
+        return password;
     }
 }
 

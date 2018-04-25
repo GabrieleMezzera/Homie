@@ -12,4 +12,12 @@
     <string name="loading">Caricamento</string>
     <string name="invalid_username_password">Nome Utente o Password Errati</string>
     <string name="connection_error">Ops! C\'è qualcosa che non va nella tua connessione a Internet</string>
+    <string name="TopicsRequest">Richiedendo i Topic</string>
+    <string name="Query_error">Mi dispiace, non sono riuscito a richiedere i tuoi topic</string>
+    <string name="missing_topics">Non hai nessun Topic</string>
+    <string name="loaded">Caricato/i</string>
+    <string name="notopicavailable">Nessun Topic Caricato</string>
+    <string name="selected">Selezionato</string>
+    <string name="selectedTopic">Codice del Topic Selezionato</string>
+    <string name="change_topic">Cambia Topic</string>
 </resources>
