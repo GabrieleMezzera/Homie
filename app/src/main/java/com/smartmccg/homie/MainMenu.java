@@ -146,7 +146,12 @@ public class MainMenu extends AppCompatActivity {
                         }
 
                         if(menuItem.toString().equalsIgnoreCase(getString(R.string.change_topic))) {
-                            PreTopicChange(navigationView);
+                            if (LoadingStatus == -3) {
+                                Toast.makeText(getApplicationContext(), getString(R.string.missing_topics), Toast.LENGTH_LONG).show();
+                            }
+                            else {
+                                PreTopicChange(navigationView);
+                            }
                         }
 
                         if (TopicSelection == false) {
@@ -177,7 +182,12 @@ public class MainMenu extends AppCompatActivity {
                 else {
                     linearLayout.setBackground(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
                 }
-                selectedTopicinNavDraw.setText(getString(R.string.selectedTopic)+": "+sp.getString("Topic", getString(R.string.notopicavailable)));
+                if (LoadingStatus == -3) {
+                    selectedTopicinNavDraw.setText(getString(R.string.selectedTopic)+": " +getString(R.string.notopicavailable));
+                }
+                else {
+                    selectedTopicinNavDraw.setText(getString(R.string.selectedTopic)+": "+sp.getString("Topic", getString(R.string.notopicavailable)));
+                }
 
                 return true;
         }
