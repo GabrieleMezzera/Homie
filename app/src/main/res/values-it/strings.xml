@@ -20,4 +20,7 @@
     <string name="selected">Selezionato</string>
     <string name="selectedTopic">Codice del Topic Selezionato</string>
     <string name="change_topic">Cambia Topic</string>
+    <string name="general">Generali</string>
+    <string name="summary">Riepilogo</string>
+    <string name="places">Luoghi</string>
 </resources>

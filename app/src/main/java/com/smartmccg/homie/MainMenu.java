@@ -1,6 +1,7 @@
 package com.smartmccg.homie;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -14,9 +15,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.text.Html;
 import android.util.Log;
+import android.view.SubMenu;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -43,6 +47,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MainMenu extends AppCompatActivity {
+
     int LoadingStatus = 0;
     private DrawerLayout navigationMenuDrawer;
     private TextView userNameinNavDraw;
@@ -51,11 +56,14 @@ public class MainMenu extends AppCompatActivity {
     private boolean UrlRecieved;
     private Bitmap NavDrawHeaderBitmap;
     private boolean NavHeaderReady=false;
+    private boolean PlacesRecieved=false;
+    private String ActualFragmentName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        ActualFragmentName = getResources().getString(R.string.summary);
+        replaceFragment(new Summary());
         setContentView(R.layout.activity_main_menu);
         SharedPreferences sp = getSharedPreferences("user_data", Activity.MODE_PRIVATE);
         String userName = sp.getString("userName", null);
@@ -89,6 +97,7 @@ public class MainMenu extends AppCompatActivity {
         }
 
         new DownloadImageTask().execute(NavDrawHeaderUrl);
+
     }
 
     public void PreTopicChange(NavigationView navigationView) {
@@ -96,24 +105,26 @@ public class MainMenu extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("about_topics", Activity.MODE_PRIVATE);
         for (int i = 0; i<sp.getInt("topic_number", 1); i++) {
             String DescriptionKey = "Description_" + (i + 1);
-            String TopicKey = "Topic_" + (i + 1);
-            navigationView.getMenu().add(sp.getString(DescriptionKey, null) + " - " + sp.getString(TopicKey, null));
+            navigationView.getMenu().add(sp.getString(DescriptionKey, null)).setIcon(R.drawable.ic_map_pin_marked);
             TopicSelection = true;
         }
     }
 
     public void ManageTopicChange(MenuItem menuItem, NavigationView navigationView) {
-        String Splitted[] = menuItem.toString().split("-");
-        String SelectedDescription = Splitted[0].substring(0, Splitted[0].length()-1);
-        String TopicSelected = Splitted[1].substring(1, Splitted[1].length());
+        String SelectedDescription = menuItem.toString();
+        String TopicSelected = null;
         SharedPreferences sp = getSharedPreferences("about_topics", Activity.MODE_PRIVATE);
+        for (int i = 0; i<sp.getInt("topic_number", 1); i++) {
+            if(sp.getString("Description_" + (i+1), null).equals(SelectedDescription)) {
+                TopicSelected = sp.getString("Topic_" + (i+1), null);
+                break;
+            }
+        }
         sp.edit().putString("Description", SelectedDescription).commit();
         sp.edit().putString("Topic", TopicSelected).commit();
         Toast.makeText(getApplicationContext(), SelectedDescription +" "+ getString(R.string.selected), Toast.LENGTH_LONG).show();
         String HtmlReadyTitle = "<font color='" + String.format("#%06X", 0xFFFFFF & getResources().getColor(R.color.pureWhite)) + "'>"+ sp.getString("Description", null) + "</font>";
         getSupportActionBar().setTitle(Html.fromHtml(HtmlReadyTitle));
-        navigationView.getMenu().clear();
-        navigationView.inflateMenu(R.menu.drawer_view);
         navigationMenuDrawer.closeDrawers();
         TopicSelection=false;
     }
@@ -128,6 +139,7 @@ public class MainMenu extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem){
                         // set item as selected to persist highlight
                         menuItem.setChecked(true);
+
                         // close drawer when item is tapped
                         if (TopicSelection == true) {
                             ManageTopicChange(menuItem, navigationView);
@@ -140,7 +152,6 @@ public class MainMenu extends AppCompatActivity {
                         if (TopicSelection == false) {
                             navigationMenuDrawer.closeDrawers();
                         }
-
                         return true;
                     }
                 });
@@ -151,6 +162,9 @@ public class MainMenu extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 navigationMenuDrawer.openDrawer(GravityCompat.START);
+                NavigationView NavView = findViewById(R.id.nav_view);
+                NavView.getMenu().clear();
+                MakeNavDrawMenu(NavView);
                 LinearLayout linearLayout = findViewById(R.id.nav_header_layout);
                 SharedPreferences userinfo = getSharedPreferences("user_data", Activity.MODE_PRIVATE);
                 userNameinNavDraw = findViewById(R.id.nav_username);
@@ -164,6 +178,7 @@ public class MainMenu extends AppCompatActivity {
                     linearLayout.setBackground(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
                 }
                 selectedTopicinNavDraw.setText(getString(R.string.selectedTopic)+": "+sp.getString("Topic", getString(R.string.notopicavailable)));
+
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -186,6 +201,33 @@ public class MainMenu extends AppCompatActivity {
         else if (LoadingStatus == -3) {
             Toast.makeText(getApplicationContext(), getString(R.string.missing_topics), Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void MakeNavDrawMenu (NavigationView NavView) {
+        Menu NavDrawMenu = NavView.getMenu();
+        SharedPreferences sp = getSharedPreferences("about_topics", Activity.MODE_PRIVATE);
+
+        SubMenu General = NavDrawMenu.addSubMenu(getResources().getString(R.string.general));
+        if (ActualFragmentName.equals(getResources().getString(R.string.summary))) {
+            General.add(getResources().getString(R.string.summary)).setIcon(R.drawable.ic_house).setChecked(true);
+        }
+        else {
+            General.add(getResources().getString(R.string.summary)).setIcon(R.drawable.ic_house);
+        }
+        if (PlacesRecieved == true) {
+            SubMenu Places = NavDrawMenu.addSubMenu(getResources().getString(R.string.places));
+        }
+        SubMenu Topics = NavDrawMenu.addSubMenu("Topics");
+        Topics.add(getString(R.string.change_topic)).setIcon(R.drawable.ic_move_option);
+    }
+
+    public void replaceFragment(android.support.v4.app.Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameContainer, fragment);
+        fragmentTransaction.addToBackStack(fragment.toString());
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        fragmentTransaction.commit();
     }
 
     private class AsyncTopicRequest extends AsyncTask<String, String, Void> {
