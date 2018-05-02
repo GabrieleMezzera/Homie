@@ -24,4 +24,5 @@
     <string name="summary">Riepilogo</string>
     <string name="places">Luoghi</string>
     <string name="available_topics">Numero di Topic Disponibili</string>
+    <string name="last_message_recieved">Ultimo messaggio ricevuto dal broker</string>
 </resources>

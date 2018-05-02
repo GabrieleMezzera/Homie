@@ -28,4 +28,5 @@
     <string name="general">General</string>
     <string name="summary">Summary</string>
     <string name="available_topics">Number of Available Topics</string>
+    <string name="last_message_recieved">Last message recieved from broker</string>
 </resources>

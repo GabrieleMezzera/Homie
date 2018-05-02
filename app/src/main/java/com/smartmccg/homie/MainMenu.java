@@ -68,10 +68,10 @@ public class MainMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        appContext = getApplicationContext();
         ActualFragmentName = getResources().getString(R.string.summary);
         replaceFragment(new Summary());
         setContentView(R.layout.activity_main_menu);
-        appContext = getApplicationContext();
         SharedPreferences sp = getSharedPreferences("user_data", Activity.MODE_PRIVATE);
         String userName = sp.getString("userName", null);
         HandleMqtt();
@@ -273,7 +273,7 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void messageArrived(String s, MqttMessage mqttMessage) throws Exception {
                 sp.edit().putString("LastMessage", new String (mqttMessage.getPayload())).commit();
-                Toast.makeText(getApplicationContext(), sp.getString("LastMessage", null), Toast.LENGTH_LONG).show();
+                Log.d("Main Menu", "Received :" +  sp.getString("LastMessage", "Disabled"));
             }
 
             @Override
