@@ -3,9 +3,6 @@
     <string name="logo_description">Il Logo di Homie</string>
     <string name="IPAddress">Indirizzo IP</string>
     <string name="login">Accesso</string>
-    <string name="door">Porta</string>
-    <string name="light">Luce</string>
-    <string name="temperature">Temperatura</string>
     <string name="logged_in">Accesso Effettuato</string>
     <string name="wrong_cred">Credenziali Errate</string>
     <string name="username">Nome Utente</string>
@@ -25,4 +22,11 @@
     <string name="places">Luoghi</string>
     <string name="available_topics">Numero di Topic Disponibili</string>
     <string name="last_message_recieved">Ultimo messaggio ricevuto dal broker</string>
+    <string name="last_update_request">L\'ultimo aggiornamento è stato richiesto</string>
+    <string name="none_update_requested">Nessun aggiornamento richiesto</string>
+    <string name="seconds_ago">Secondi fa</string>
+    <string name="AnyStatAvaliable">There isn\'t any status</string>
+    <string name="door">Porta</string>
+    <string name="lights">Luci</string>
+    <string name="temperature">Temperatura</string>
 </resources>

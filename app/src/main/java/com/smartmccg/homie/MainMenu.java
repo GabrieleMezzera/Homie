@@ -8,12 +8,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.text.Html;
 import android.util.Log;
@@ -49,10 +51,11 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class MainMenu extends AppCompatActivity {
-    PahoMqttClient mqttHelper;
-    MqttAndroidClient client;
+    public PahoMqttClient mqttHelper;
+    public MqttAndroidClient client;
     int LoadingStatus = 0;
     private DrawerLayout navigationMenuDrawer;
     private TextView userNameinNavDraw;
@@ -61,9 +64,9 @@ public class MainMenu extends AppCompatActivity {
     private boolean UrlRecieved;
     private Bitmap NavDrawHeaderBitmap;
     private boolean NavHeaderReady = false;
-    private boolean PlacesRecieved = false;
     private String ActualFragmentName;
     public static Context appContext;
+    public static ArrayList<Room> Rooms = new ArrayList<Room>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,8 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
         SharedPreferences sp = getSharedPreferences("user_data", Activity.MODE_PRIVATE);
         String userName = sp.getString("userName", null);
+        sp = getSharedPreferences("about_topics", Activity.MODE_PRIVATE);
+        sp.edit().putBoolean("Connected", false).commit();
         HandleMqtt();
         new MainMenu.AsyncTopicRequest().execute(userName);
         LoadingTopicsListener();
@@ -234,8 +239,11 @@ public class MainMenu extends AppCompatActivity {
         } else {
             General.add(getResources().getString(R.string.summary)).setIcon(R.drawable.ic_house);
         }
-        if (PlacesRecieved == true) {
+        if (Rooms.size() > 0) {
             SubMenu Places = NavDrawMenu.addSubMenu(getResources().getString(R.string.places));
+            for (int ActualRoom = 0; ActualRoom < Rooms.size(); ActualRoom++) {
+                Places.add(Rooms.get(ActualRoom).Name).setIcon(SelectRoomIcon(Rooms.get(ActualRoom).Type));
+            }
         }
         SubMenu Topics = NavDrawMenu.addSubMenu("Topics");
         Topics.add(getString(R.string.change_topic)).setIcon(R.drawable.ic_move_option);
@@ -260,6 +268,8 @@ public class MainMenu extends AppCompatActivity {
             public void connectComplete(boolean b, String s) {
                 try {
                     mqttHelper.subscribe(client, sp.getString("Topic", null), 1);
+                    SharedPreferences sp = getSharedPreferences("about_topics", Activity.MODE_PRIVATE);
+                    sp.edit().putBoolean("Connected", true).commit();
                 } catch (MqttException e) {
                     e.printStackTrace();
                 }
@@ -267,7 +277,7 @@ public class MainMenu extends AppCompatActivity {
 
             @Override
             public void connectionLost(Throwable throwable) {
-
+                sp.edit().putBoolean("Connected", false).commit();
             }
 
             @Override
@@ -283,6 +293,24 @@ public class MainMenu extends AppCompatActivity {
         });
     }
 
+    private Drawable SelectRoomIcon (String Type) {
+        Drawable ReturnDrawable = null;
+        switch (Type) {
+            case "Kitchen": {
+                ReturnDrawable = ContextCompat.getDrawable(appContext, R.drawable.ic_pan);
+                break;
+            }
+            case "Living Room":{
+                ReturnDrawable = ContextCompat.getDrawable(appContext, R.drawable.ic_living_room);
+                break;
+            }
+            default:{
+                ReturnDrawable = ContextCompat.getDrawable(appContext, R.drawable.ic_doors);
+                break;
+            }
+        }
+        return ReturnDrawable;
+    }
     private class AsyncTopicRequest extends AsyncTask<String, String, Void> {
         ProgressDialog pdLoading = new ProgressDialog(MainMenu.this);
         HttpURLConnection conn;

@@ -14,10 +14,6 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.io.UnsupportedEncodingException;
 
-/**
- * Created by brijesh on 20/4/17.
- */
-
 public class PahoMqttClient {
 
     private static final String TAG = "PahoMqttClient";
@@ -78,7 +74,7 @@ public class PahoMqttClient {
     @NonNull
     private MqttConnectOptions getMqttConnectionOption() {
         MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
-        mqttConnectOptions.setCleanSession(false);
+        mqttConnectOptions.setCleanSession(true);
         mqttConnectOptions.setAutomaticReconnect(true);
         //mqttConnectOptions.setWill(Constants.PUBLISH_TOPIC, "I am going offline".getBytes(), 1, true);
         mqttConnectOptions.setUserName("ymvtojfu");
@@ -86,9 +82,7 @@ public class PahoMqttClient {
         return mqttConnectOptions;
     }
 
-
-    public void publishMessage(@NonNull MqttAndroidClient client, @NonNull String msg, int qos, @NonNull String topic)
-            throws MqttException, UnsupportedEncodingException {
+    public void publishMessage(@NonNull MqttAndroidClient client, @NonNull String msg, int qos, @NonNull String topic) throws MqttException, UnsupportedEncodingException {
         byte[] encodedPayload = new byte[0];
         encodedPayload = msg.getBytes("UTF-8");
         MqttMessage message = new MqttMessage(encodedPayload);

@@ -29,4 +29,9 @@
     <string name="summary">Summary</string>
     <string name="available_topics">Number of Available Topics</string>
     <string name="last_message_recieved">Last message recieved from broker</string>
+    <string name="last_update_request">Last Update has been requested</string>
+    <string name="none_update_requested">No Update Requested</string>
+    <string name="seconds_ago">Seconds Ago</string>
+    <string name="AnyStatAvaliable">There isn\'t any status</string>
+    <string name="lights">Lights</string>
 </resources>
