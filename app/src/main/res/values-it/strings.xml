@@ -29,4 +29,10 @@
     <string name="door">Porta</string>
     <string name="lights">Luci</string>
     <string name="temperature">Temperatura</string>
+    <string name="gasdetector">Rilevatori di Gas</string>
+    <string name="doors">Porte</string>
+    <string name="conditioner">Condizionatori</string>
+    <string name="radiator">Caloriferi</string>
+    <string name="windows">Finestre</string>
+    <string name="antitheft">Antifurto</string>
 </resources>

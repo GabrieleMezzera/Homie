@@ -170,6 +170,34 @@ public class Room {
                 OutString = Context.getResources().getString(R.string.lights);
                 break;
             }
+            case "GasDetector": {
+                OutString = Context.getResources().getString(R.string.gasdetector);
+                break;
+            }
+            case "Door": {
+                OutString = Context.getResources().getString(R.string.doors);
+                break;
+            }
+            case "Temperature": {
+                OutString = Context.getResources().getString(R.string.tempSensor);
+                break;
+            }
+            case "Conditioner": {
+                OutString = Context.getResources().getString(R.string.conditioner);
+                break;
+            }
+            case "Radiator": {
+                OutString = Context.getResources().getString(R.string.radiator);
+                break;
+            }
+            case "Window": {
+                OutString = Context.getResources().getString(R.string.windows);
+                break;
+            }
+            case "Antitheft": {
+                OutString = Context.getResources().getString(R.string.antitheft);
+                break;
+            }
             default: {
                 OutString = deviceType;
                 break;
@@ -191,8 +219,23 @@ public class Room {
     }
 
     public void addDevice (String Type, String DevNumber, String DevName) {
-        Devices.add(new Device());
-        Devices.get(Devices.size()-1).Initialize(Type, DevNumber, DevName);
+        boolean Added = false;
+        if (Devices.size() > 0) {
+            for (int i = 0; i<Devices.size(); i++) {
+                if (Devices.get(i).Typ.equalsIgnoreCase(Type) && Devices.get(i).Number.equalsIgnoreCase(DevNumber)) {
+                    Devices.get(i).Initialize(Type, DevNumber, DevName);
+                    Added = true;
+                }
+            }
+            if (Added == false) {
+                Devices.add(new Device());
+                Devices.get(Devices.size()-1).Initialize(Type, DevNumber, DevName);
+            }
+        }
+        else {
+            Devices.add(new Device());
+            Devices.get(Devices.size()-1).Initialize(Type, DevNumber, DevName);
+        }
     }
 
     public void addDeviceValue (String ValueName, String Value, String DeviceType, String DeviceNumber) {

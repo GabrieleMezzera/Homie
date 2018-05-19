@@ -1,0 +1,13 @@
+<vector android:height="24dp" android:viewportHeight="480"
+    android:viewportWidth="480" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#FF000000" android:pathData="M80,100h16v16h-16z"/>
+    <path android:fillColor="#FF000000" android:pathData="M160,100h16v16h-16z"/>
+    <path android:fillColor="#FF000000" android:pathData="M232,100h16v16h-16z"/>
+    <path android:fillColor="#FF000000" android:pathData="M304,100h16v16h-16z"/>
+    <path android:fillColor="#FF000000" android:pathData="M376,100h16v16h-16z"/>
+    <path android:fillColor="#FF000000" android:pathData="M120,140h16v16h-16z"/>
+    <path android:fillColor="#FF000000" android:pathData="M200,140h16v16h-16z"/>
+    <path android:fillColor="#FF000000" android:pathData="M272,140h16v16h-16z"/>
+    <path android:fillColor="#FF000000" android:pathData="M344,140h16v16h-16z"/>
+    <path android:fillColor="#FF000000" android:pathData="M472,324h-16V108c-0.026,-26.499 -21.501,-47.974 -48,-48H72c-26.499,0.026 -47.974,21.501 -48,48v216H8c-4.418,0 -8,3.582 -8,8v48c0,4.418 3.582,8 8,8h16v24c0,4.418 3.582,8 8,8h32c3.032,0.001 5.805,-1.712 7.16,-4.424L84.944,388h310.112l13.784,27.576c1.355,2.712 4.128,4.425 7.16,4.424h32c4.418,0 8,-3.582 8,-8v-24h16c4.418,0 8,-3.582 8,-8v-48C480,327.582 476.418,324 472,324zM40,108c0,-17.673 14.327,-32 32,-32h336c17.673,0 32,14.327 32,32v216h-20.448c2.879,-4.843 4.415,-10.366 4.448,-16v-32c0,-17.673 -14.327,-32 -32,-32v-56c0,-4.418 -3.582,-8 -8,-8H272c-4.418,0 -8,3.582 -8,8v56h-48v-56c0,-4.418 -3.582,-8 -8,-8H96c-4.418,0 -8,3.582 -8,8v56c-17.673,0 -32,14.327 -32,32v32c0.033,5.634 1.569,11.157 4.448,16H40V108zM104,244v-48h96v48H104zM180.688,260L152,288.688L123.312,260H180.688zM146.344,305.656c3.124,3.123 8.188,3.123 11.312,0L203.312,260H392c8.837,0 16,7.163 16,16v32c0,8.837 -7.163,16 -16,16H88c-8.837,0 -16,-7.163 -16,-16v-32c0,-8.837 7.163,-16 16,-16h12.688L146.344,305.656zM280,244v-48h96v48H280zM59.056,404H40v-16h27.056L59.056,404zM440,404h-19.056l-8,-16H440V404zM464,372H16v-32h448V372z"/>
+</vector>

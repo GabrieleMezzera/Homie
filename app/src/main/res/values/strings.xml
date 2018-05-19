@@ -34,4 +34,11 @@
     <string name="seconds_ago">Seconds Ago</string>
     <string name="AnyStatAvaliable">There isn\'t any status</string>
     <string name="lights">Lights</string>
+    <string name="gasdetector">Gas Detectors</string>
+    <string name="doors">Doors</string>
+    <string name="tempSensor">Temperatures</string>
+    <string name="conditioner">Conditioner</string>
+    <string name="radiator">Radiators</string>
+    <string name="windows">Windows</string>
+    <string name="antitheft">Antitheft</string>
 </resources>

@@ -300,8 +300,25 @@ public class MainMenu extends AppCompatActivity {
                 ReturnDrawable = ContextCompat.getDrawable(appContext, R.drawable.ic_pan);
                 break;
             }
-            case "Living Room":{
+            case "LivingRoom":{
                 ReturnDrawable = ContextCompat.getDrawable(appContext, R.drawable.ic_living_room);
+                break;
+            }
+
+            case "Bedroom":{
+                ReturnDrawable = ContextCompat.getDrawable(appContext, R.drawable.ic_bed);
+                break;
+            }
+            case "Cellar":{
+                ReturnDrawable = ContextCompat.getDrawable(appContext, R.drawable.ic_barrel);
+                break;
+            }
+            case "Entrance":{
+                ReturnDrawable = ContextCompat.getDrawable(appContext, R.drawable.ic_door_knob);
+                break;
+            }
+            case "Terrace":{
+                ReturnDrawable = ContextCompat.getDrawable(appContext, R.drawable.ic_facade);
                 break;
             }
             default:{
